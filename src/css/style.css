@@ -1,38 +1,47 @@
 @import url("reset.css");
 
+
+/***
+	grid layout setting
+						***/
 div.container{
 	display: grid;
-	grid-template-rows:80px 80px 80px;
-	grid-template-columns:80px 80px 80px;
-	/*grid-template-columns:50% 1fr 2fr;*//*fr -- 比率 1:2*/
-	/*grid-gap:10px;*/
-	/*grid-template:repeat(3,80px)/repeat(auto-fill,300px);*/
-	grid-template-areas:
-		"header header header"
-		"main 	main 	side "
-		"footer footer footer"
-	 ;
-
+	grid-template:
+		"header" 50px
+		"main" 50px
+		"side" 50px
+		"footer" 50px
+		/ 100%
+	;
 }
 
 div.item-1{
 	background:hsl(300, 80%, 50%);
 	grid-area: header;
-/*	grid-row: 2;
-	grid-column: 2/3;*/
 }
 div.item-2{
 	background:hsl(300, 80%, 40%);
 	grid-area: main;
+
 }
 div.item-3{
 	background:hsl(300, 80%, 30%);
 	grid-area: side;
-}
 
+}
 div.item-4{
 	background:hsl(200, 80%, 50%);
 	grid-area: footer;
-/*	grid-row: 1/3;
-	grid-column:3/4;*/
+}
+
+/*smart phone*/
+@media (min-width: 570px){
+	div.container{
+		display: grid;
+		grid-template:
+			"header header" 50px
+			"side main" 50px
+			"footer footer" 50px
+			/ 200px 1fr 
+		;/*sidebarは200px残った要素は可変にする設定（1fr 200px）*/
 }
